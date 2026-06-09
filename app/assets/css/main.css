@@ -1,0 +1,118 @@
+/* 토큰 레이어 먼저, 그다음 Tailwind. (@import 는 다른 구문보다 앞서야 한다.) */
+@import './base.css';
+@import 'tailwindcss';
+
+/* 클래스 기반 다크 모드: <html>.dark 가 있으면 dark: 유틸리티가 적용된다. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 런타임 토큰 -> Tailwind 테마 브리지.
+   inline 이라 유틸리티가 var(--token) 을 그대로 emit → 테마 전환에 즉시 반응. */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-heading: var(--heading);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-brand: var(--brand);
+  --color-brand-contrast: var(--brand-contrast);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-muted: var(--brand-muted);
+
+  --color-ring: var(--ring);
+
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-app: var(--radius);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-height: 100vh;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+}
+
+/* shiki 코드 블록 (v-html 주입이라 전역).
+   라이트 기본 + .dark 에서 --shiki-dark 커스텀 프로퍼티로 스왑 (듀얼 테마). */
+@layer components {
+  .shiki {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+    overflow-x: auto;
+  }
+
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+/* 토픽 페이지 본문 타이포그래피 (TopicPage 슬롯으로 넘어온 리치 텍스트용, 전역). */
+@layer components {
+  .prose-content h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--heading);
+    margin: 2rem 0 0.6rem;
+  }
+  .prose-content p {
+    margin: 0.6rem 0;
+  }
+  .prose-content strong {
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .prose-content :is(p, li, .key) code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--surface-muted);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .prose-content .key {
+    border-left: 3px solid var(--brand);
+    background: var(--surface);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+  }
+  .prose-content ul {
+    margin: 0.6rem 0;
+    padding-left: 1.2rem;
+    list-style: disc;
+  }
+  .prose-content li {
+    margin: 0.3rem 0;
+  }
+  .prose-content a {
+    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}

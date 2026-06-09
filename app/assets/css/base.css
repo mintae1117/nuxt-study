@@ -1,0 +1,55 @@
+/* =============================================================================
+   Design Tokens — vue-study 에서 그대로 가져온 테마.
+   Light 값은 :root, dark 오버라이드는 .dark (테마 시스템이 <html> 에 토글).
+   ============================================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --background: #ffffff;
+  --surface: #f8f8f8;
+  --surface-muted: #f1f1f1;
+
+  /* text */
+  --foreground: #3c4858;
+  --muted-foreground: rgba(60, 60, 60, 0.62);
+  --heading: #2c3e50;
+
+  /* lines */
+  --border: rgba(60, 60, 60, 0.12);
+  --border-strong: rgba(60, 60, 60, 0.26);
+
+  /* brand — Nuxt green (#00DC82 계열) */
+  --brand: hsl(154 100% 43%);
+  --brand-contrast: #ffffff;
+  --brand-soft: hsl(154 100% 43% / 0.12);
+  --brand-muted: hsl(154 100% 43% / 0.2);
+
+  /* focus ring */
+  --ring: hsl(154 100% 43% / 0.45);
+
+  --radius: 0.625rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #0c0c0d;
+  --surface: #161618;
+  --surface-muted: #1f1f22;
+
+  --foreground: rgba(235, 235, 235, 0.82);
+  --muted-foreground: rgba(235, 235, 235, 0.5);
+  --heading: #ffffff;
+
+  --border: rgba(84, 84, 84, 0.48);
+  --border-strong: rgba(140, 140, 140, 0.5);
+
+  --brand: hsl(154 90% 50%);
+  --brand-contrast: #0a0a0a;
+  --brand-soft: hsl(154 90% 50% / 0.16);
+  --brand-muted: hsl(154 90% 50% / 0.26);
+
+  --ring: hsl(154 90% 50% / 0.5);
+}
