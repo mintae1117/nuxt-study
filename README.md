@@ -1,5 +1,7 @@
 # Nuxt ↔ Vue 학습 노트
 
+🔗 **라이브 데모: [nuxt-study-for-me.netlify.app](https://nuxt-study-for-me.netlify.app/)**
+
 **이미 Vue 3 (Composition API)를 아는 사람**을 위한 Nuxt 비교 학습 가이드입니다.
 "Nuxt 가 순수 Vue 위에 무엇을 더 얹어주는가"를 주제별로 **개념 설명 · 라이브 데모 · Nuxt vs Vue 코드 비교**로 정리했습니다.
 
@@ -74,26 +76,9 @@ nuxt-study/
 - **다크모드 깜빡임(FOUC) 방지**: SSR 은 사용자 테마(localStorage)를 모른 채 라이트로 HTML 을 보내므로, `nuxt.config.ts` 의 `app.head.script` 에 **페인트 차단 인라인 스크립트**를 `<head>` 에 주입해 첫 페인트 전에 `<html>.dark` 를 적용한다. 이 스크립트의 판정 로직은 `app/composables/useTheme.ts` 와 항상 동일하게 유지할 것.
 - **코드 하이라이팅**: shiki 는 wasm 기반이라 SSR 대신 클라이언트 마운트(`onMounted`) 후 실행하고, 그 전에는 plain `<pre>` 로 폴백한다.
 
-## 시작하기
-
-의존성 설치:
+## 로컬 실행
 
 ```bash
 npm install
+npm run dev        # 개발 서버 (http://localhost:3000)
 ```
-
-개발 서버 실행 (`http://localhost:3000`):
-
-```bash
-npm run dev
-```
-
-## 빌드
-
-```bash
-npm run build      # 프로덕션 빌드 (SSR)
-npm run preview    # 빌드 결과 미리보기
-npm run generate   # 정적 사이트(SSG) 생성
-```
-
-자세한 내용은 [Nuxt 공식 문서](https://nuxt.com/docs)와 [배포 문서](https://nuxt.com/docs/getting-started/deployment)를 참고하세요.
