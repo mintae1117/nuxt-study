@@ -50,5 +50,13 @@ const count = useState('demo-count', () => 0)
       대규모 상태에는 여전히 <strong>Pinia</strong> 를 씁니다(Nuxt 는 <code>@pinia/nuxt</code> 로
       매끄럽게 통합). <code>useState</code> 는 "SSR 안전한 가벼운 <code>ref</code>" 정도로 보면 됩니다.
     </div>
+
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> "서버에서 만든 값이 클라이언트 상태로 그대로 이어지는"
+      프리미티브가 Next 엔 없어서, RSC → props 직렬화나 Context 초기값 주입을 수작업했을 겁니다.
+      <code>useState</code> 가 정확히 그 빈자리입니다. 쿠키 기반이라면 <code>useCookie</code> 도
+      있습니다 — 서버/클라 <strong>양쪽에서 읽고 쓰는</strong> SSR-safe 쿠키 ref 로, RSC 의
+      <code>cookies()</code> 가 읽기 전용이었던 것과 대비됩니다.
+    </div>
   </TopicPage>
 </template>

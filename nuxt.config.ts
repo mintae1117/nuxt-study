@@ -5,6 +5,15 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
+  // 11번 토픽(Next.js 이주 가이드) 라이브 데모용 런타임 설정.
+  // public 값은 클라이언트에 노출되며, 배포 환경에서 NUXT_PUBLIC_APP_VERSION
+  // 환경변수로 '재빌드 없이' 덮어쓸 수 있다 (NEXT_PUBLIC_* 빌드 인라인과의 차이점).
+  runtimeConfig: {
+    public: {
+      appVersion: "1.0.0",
+    },
+  },
+
   // 전역 CSS (테마 토큰 + Tailwind). vue-study 의 테마를 그대로 포팅했다.
   css: ["~/assets/css/main.css"],
 

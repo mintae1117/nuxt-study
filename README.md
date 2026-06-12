@@ -5,6 +5,8 @@
 **이미 Vue 3 (Composition API)를 아는 사람**을 위한 Nuxt 비교 학습 가이드입니다.
 "Nuxt 가 순수 Vue 위에 무엇을 더 얹어주는가"를 주제별로 **개념 설명 · 라이브 데모 · Nuxt vs Vue 코드 비교**로 정리했습니다.
 
+**React / Next.js 에서 넘어오는 사람**을 위한 내용도 들어 있습니다 — 토픽 09(하이드레이션 & 클라이언트 코드), 10(미들웨어 & 에러 처리), 11(Next.js → Nuxt 이주 가이드 대응표)과 각 토픽의 "Next.js 개발자라면" 비교 박스를 참고하세요.
+
 > 자매 프로젝트인 [`vue-study`](../vue-study)(React 개발자를 위한 Vue 비교 가이드)의 형식을 그대로 따왔고, 테마도 동일하게 사용합니다.
 
 ## 핵심 컨셉: 앱 자체가 Nuxt 데모
@@ -17,9 +19,9 @@
 - 데이터 페칭 페이지 = 실제 `server/api` (Nitro) 호출
 - 각 페이지 제목 = `useSeoMeta` 로 SSR 단계에 설정
 
-## 학습 토픽 (8개)
+## 학습 토픽 (11개)
 
-| # | 토픽 | Nuxt vs Vue 핵심 비교 |
+| # | 토픽 | 핵심 비교 |
 |---|------|----------------------|
 | 1 | 파일 기반 라우팅 | `pages/` 자동 생성 ↔ `vue-router` 수동 설정 |
 | 2 | 자동 임포트 | import 불필요 ↔ 매번 `import` |
@@ -29,6 +31,9 @@
 | 6 | SEO & 메타 | `useHead` / `useSeoMeta` ↔ 라이브러리 필요 |
 | 7 | 서버 라우트 (Nitro) | `server/api` 풀스택 ↔ 별도 백엔드 |
 | 8 | 상태 공유 | `useState` (요청 격리) ↔ `ref` 모듈 싱글톤 (SSR 오염 위험) |
+| 9 | 하이드레이션 & 클라이언트 코드 | universal 컴포넌트 / `<ClientOnly>` ↔ `'use client'` / `dynamic(ssr:false)` |
+| 10 | 미들웨어 & 에러 처리 | `middleware/` + `error.vue` + `createError` ↔ `middleware.ts` + `error.tsx` |
+| 11 | Next.js → Nuxt 이주 가이드 | App Router 규약 ↔ Nuxt 규약 대응표 · `runtimeConfig` ↔ `NEXT_PUBLIC_*` |
 
 ## 기술 스택
 
@@ -43,13 +48,16 @@
 
 ```
 nuxt-study/
-├─ nuxt.config.ts          # Tailwind vite 플러그인, 전역 head, FOUC 방지 스크립트
+├─ nuxt.config.ts          # Tailwind vite 플러그인, 전역 head, FOUC 방지 스크립트, runtimeConfig
 ├─ server/api/
 │  ├─ users.ts             # GET /api/users  (Nitro 풀스택 데모)
-│  └─ hello.ts             # GET /api/hello  (쿼리 파라미터 데모)
+│  ├─ hello.ts             # GET /api/hello  (쿼리 파라미터 데모)
+│  └─ secret.ts            # GET /api/secret (createError 401 데모)
 └─ app/
    ├─ app.vue              # <NuxtLayout><NuxtPage/>
    ├─ layouts/default.vue  # 사이드바 레이아웃
+   ├─ middleware/
+   │  └─ demo-log.ts        # 라우트 미들웨어 라이브 데모 (10번 토픽)
    ├─ assets/css/
    │  ├─ base.css          # 디자인 토큰(라이트/다크)
    │  └─ main.css          # Tailwind + shiki + prose 스타일
@@ -66,7 +74,8 @@ nuxt-study/
       ├─ index.vue          # 개요 / 멘탈 모델 매핑
       ├─ routing.vue        ├─ auto-imports.vue ├─ layouts.vue
       ├─ data-fetching.vue  ├─ rendering.vue    ├─ seo.vue
-      ├─ server.vue         └─ state.vue
+      ├─ server.vue         ├─ state.vue        ├─ hydration.vue
+      ├─ middleware.vue     └─ nextjs.vue
 ```
 
 > `server/` 와 `nuxt.config.ts` 는 Nuxt 규약상 프로젝트 루트에 위치합니다. 학습 콘텐츠 본체는 모두 `app/` 안에 있습니다.

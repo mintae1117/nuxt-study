@@ -37,5 +37,14 @@ useSeoMeta({ title: '레이아웃 시스템 · Nuxt 학습', description: 'layou
       <code>&lt;NuxtLayout&gt;&lt;NuxtPage /&gt;&lt;/NuxtLayout&gt;</code>.
       바깥 껍데기는 <code>NuxtLayout</code>(layouts/), 그 안에서 바뀌는 본문은 <code>NuxtPage</code>(pages/).
     </div>
+
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> <code>layout.tsx</code> 와 가장 다른 점은
+      <strong>중첩이 아니라 평면</strong>이라는 것 — 폴더마다 레이아웃이 겹겹이 쌓이는 대신, 페이지가
+      <code>definePageMeta({ layout })</code> 로 레이아웃 <em>하나를 선택</em>합니다. 폴더 단위 중첩
+      UI 가 필요하면 <code>pages/</code> 중첩 + 부모 페이지의 <code>&lt;NuxtPage /&gt;</code> 로
+      만듭니다. "페이지를 오가도 레이아웃은 리렌더되지 않고 상태가 유지된다"는 성질은
+      <code>layout.tsx</code> 와 동일합니다.
+    </div>
   </TopicPage>
 </template>

@@ -51,5 +51,13 @@ const double = computed(() => count.value * 2)
       <code>app/composables</code>, <code>app/utils</code> 등 <em>정해진 디렉터리</em>뿐입니다.
       <code>~/data/samples</code> 같은 일반 모듈은 지금처럼 직접 import 합니다.
     </div>
+
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> Next 에는 아예 없는 기능이라 처음엔 "import 가 없는데 왜
+      돌지?" 하고 당황하기 쉽습니다. 출처가 궁금하면 IDE 의 정의로 이동(Go to Definition)이 그대로
+      동작하고, 마법이 싫으면 <code>nuxt.config.ts</code> 에서
+      <code>imports.autoImport: false</code> 로 끄거나 <code>#imports</code> 에서 명시적으로 import
+      할 수도 있습니다.
+    </div>
   </TopicPage>
 </template>

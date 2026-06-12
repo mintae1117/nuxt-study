@@ -44,5 +44,14 @@ const route = useRoute()
       <code>&lt;RouterLink&gt;</code>, <code>useRoute()</code> 동일). 다만 <em>라우트를 코드로 선언하지
       않는다</em>는 게 핵심 차이입니다.
     </div>
+
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> <code>app/users/[id]/page.tsx</code> ↔
+      <code>pages/users/[id].vue</code> — 폴더 + <code>page.tsx</code> 대신 <strong>파일 하나가 곧
+      페이지</strong>입니다. <code>&lt;NuxtLink&gt;</code> 는 <code>&lt;Link&gt;</code> 처럼 뷰포트에
+      들어오면 prefetch 하고, 코드 리다이렉트는 <code>navigateTo()</code> 하나가
+      <code>redirect()</code>(서버)와 <code>router.push()</code>(클라)를 겸합니다. 페이지 단위
+      가드·검증은 <code>definePageMeta({ middleware, validate })</code> — 10번 토픽 참고.
+    </div>
   </TopicPage>
 </template>

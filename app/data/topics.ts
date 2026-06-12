@@ -58,4 +58,22 @@ export const topics: Topic[] = [
     title: '상태 공유',
     summary: 'useState (SSR 안전) vs ref 모듈 싱글톤',
   },
+  {
+    no: 9,
+    path: '/hydration',
+    title: '하이드레이션 & 클라이언트 코드',
+    summary: "universal 컴포넌트 / <ClientOnly> vs 'use client'",
+  },
+  {
+    no: 10,
+    path: '/middleware',
+    title: '미들웨어 & 에러 처리',
+    summary: 'middleware/ + error.vue vs middleware.ts + error.tsx',
+  },
+  {
+    no: 11,
+    path: '/nextjs',
+    title: 'Next.js → Nuxt 이주 가이드',
+    summary: 'App Router 규약 ↔ Nuxt 규약 총정리 대응표',
+  },
 ]

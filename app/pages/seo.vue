@@ -38,5 +38,20 @@ useSeoMeta({
         이동하면 그 페이지의 제목으로 다시 바뀝니다.
       </p>
     </DemoBox>
+
+    <h2>Next.js 와 비교 — metadata / generateMetadata</h2>
+    <CompareCode
+      :nuxt="s.reactive"
+      :vue="s.nextMeta"
+      vue-label="Next.js"
+      nuxt-lang="ts"
+      vue-lang="tsx"
+    />
+    <div class="key">
+      Next 의 <code>generateMetadata</code> 는 페이지 렌더와 <em>별도 함수</em>에서 데이터를 다시
+      만져야 하고 서버 컴포넌트 전용이지만, Nuxt 의 <code>useSeoMeta</code> 는 페이지가 이미 가진
+      반응형 데이터에 <strong>getter 로 그대로 연결</strong>됩니다 — 클라이언트 내비게이션으로 값이
+      바뀌면 메타도 따라 바뀝니다. 공통 접미사는 <code>titleTemplate</code> 으로 처리합니다.
+    </div>
   </TopicPage>
 </template>

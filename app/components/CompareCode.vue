@@ -1,11 +1,12 @@
 <script setup lang="ts">
-// Nuxt 코드와 (순수) Vue 코드를 나란히 비교해서 보여주는 카드.
-// <CodeBlock> 은 app/components 라 자동 임포트된다.
+// Nuxt 코드와 비교 대상(기본: 순수 Vue, vue-label 로 Next.js 등 변경 가능)을
+// 나란히 보여주는 카드. <CodeBlock> 은 app/components 라 자동 임포트된다.
 defineProps<{
   nuxt: string
   vue: string
   nuxtLang?: string
   vueLang?: string
+  vueLabel?: string
 }>()
 </script>
 
@@ -20,8 +21,9 @@ defineProps<{
     </div>
     <div class="min-w-0">
       <span
-        class="mb-2 inline-block rounded-full bg-[#42b883] px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-[#0a0a0a]"
-        >Vue (plain)</span
+        class="mb-2 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide"
+        :class="vueLabel ? 'bg-foreground text-background' : 'bg-[#42b883] text-[#0a0a0a]'"
+        >{{ vueLabel ?? 'Vue (plain)' }}</span
       >
       <CodeBlock :code="vue" :lang="vueLang ?? 'vue'" />
     </div>

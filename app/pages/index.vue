@@ -30,6 +30,9 @@ const mapping: { vue: string; nuxt: string }[] = [
         <strong class="font-semibold text-foreground"
           >개념 · 라이브 데모 · Nuxt vs Vue 코드 비교</strong
         >가 들어 있습니다.
+        <strong class="font-semibold text-foreground">Next.js 에서 넘어왔다면</strong>
+        09(하이드레이션) · 10(미들웨어 & 에러) · 11(이주 가이드 대응표) 토픽과 각 페이지의
+        "Next.js 개발자라면" 박스를 함께 보세요.
       </p>
     </header>
 

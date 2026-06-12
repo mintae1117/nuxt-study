@@ -57,5 +57,20 @@ async function callApi() {
         그저 <code>/api/hello</code> 를 호출할 뿐입니다.
       </p>
     </DemoBox>
+
+    <h2>REST 컨벤션 — 파일명 접미사 vs route.ts 의 export</h2>
+    <p>
+      Next.js 는 <code>route.ts</code> 한 파일 안에서 <code>GET</code>/<code>POST</code> 함수를
+      export 하지만, Nuxt 는 <strong>파일명 접미사</strong>(<code>.get.ts</code>,
+      <code>.post.ts</code>)로 메서드를 나눕니다. body 파싱·에러 응답도 헬퍼 한 줄입니다.
+    </p>
+    <CompareCode :nuxt="s.rest" :vue="s.nextRoute" vue-label="Next.js" nuxt-lang="ts" vue-lang="ts" />
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> Server Actions 에 해당하는 것은 따로 없습니다 — 변이도
+      그냥 <code>server/api/*.post.ts</code> + <code>$fetch</code> 입니다. 대신 라우트 핸들러
+      바깥의 도구가 더 많습니다: <code>server/middleware/</code>(모든 요청에 실행),
+      <code>server/routes/</code>(API 외 경로), 그리고 <code>defineCachedEventHandler</code> 로
+      핸들러 자체를 캐시할 수도 있습니다.
+    </div>
   </TopicPage>
 </template>

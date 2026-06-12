@@ -39,5 +39,15 @@ useSeoMeta({ title: '렌더링 모드 · Nuxt 학습', description: 'SSR / SSG /
         보일 겁니다.
       </p>
     </DemoBox>
+
+    <div class="key">
+      <strong>Next.js 개발자라면:</strong> 같은 그림에 이름만 다릅니다 —
+      <code>revalidate: 3600</code>(ISR) ↔ <code>swr: 3600</code>,
+      <code>generateStaticParams</code> + <code>output: 'export'</code> ↔
+      <code>nuxt generate</code>(prerender 가 링크를 크롤링), 그리고 <code>ssr: false</code> 는 Next
+      에 정확한 대응이 없는 <strong>"진짜 CSR"</strong> 입니다. 가장 큰 차이는 전략을 페이지
+      파일/페칭 코드에 흩뿌리지 않고 <strong><code>nuxt.config.ts</code> 의 routeRules 한
+      곳</strong>에서 경로 패턴으로 선언한다는 점입니다.
+    </div>
   </TopicPage>
 </template>
