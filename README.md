@@ -1,7 +1,5 @@
 # Nuxt ↔ Vue 학습 노트
 
-🔗 **라이브 데모: [nuxt-study-for-me.netlify.app](https://nuxt-study-for-me.netlify.app/)**
-
 **이미 Vue 3 (Composition API)를 아는 사람**을 위한 Nuxt 비교 학습 가이드입니다.
 "Nuxt 가 순수 Vue 위에 무엇을 더 얹어주는가"를 주제별로 **개념 설명 · 라이브 데모 · Nuxt vs Vue 코드 비교**로 정리했습니다.
 
